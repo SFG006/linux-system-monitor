@@ -1,3 +1,8 @@
-__pycache__/
+# Virtual Environment
 myenv/
-*.pyc
+
+# Compiled Python files
+__pycache__/
+
+# Log file (optional, depending on if it's large or constantly changing)
+system_log.csv
