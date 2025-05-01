@@ -1,4 +1,7 @@
 import psutil
+import platform
+import time
+import socket
 
 class SystemMonitor:
     def __init__(self):
@@ -32,4 +35,16 @@ class SystemMonitor:
             "disk": disk,
             "net_sent": net_sent,
             "net_recv": net_recv
+        }
+    def get_system_info(self):
+        boot_time = psutil.boot_time()
+        uptime_seconds = time.time() - boot_time
+        uptime = time.strftime("%H:%M:%S", time.gmtime(uptime_seconds))
+        os_info = platform.system() + " " + platform.release()
+        hostname = socket.gethostname()
+
+        return {
+            "hostname": hostname,
+            "os": os_info,
+            "uptime": uptime,
         }
